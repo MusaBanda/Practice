@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form onsubmit="return registerUser();">
+    <label for="regUsername">Username:</label>
+    <input type="text" id="regUsername" required /><br/><br/>
+    
+    <label for="regPassword">Password:</label>
+    <input type="password" id="regPassword" required /><br/><br/>
+
+    <p id="registerMessage" hidden></p>
+
+    <button type="submit">Register</button>
+  </form>
+  
+
+  <script>
+    function registerUser() {
+      const username = document.getElementById("regUsername").value.trim();
+      const password = document.getElementById("regPassword").value.trim();
+
+      if (!username || !password) {
+        showMessage("Please fill out all fields.");
+        return false;
+      }
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      // Check if username already exists
+      if (users.some(user => user.username === username)) {
+        showMessage("Username already taken. Please choose another.");
+        return false;
+      }
+
+      users.push({ username, password });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      showMessage("Registration successful! You can now log in.");
+
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 2000);
+
+      return false;
+
+      function showMessage(msg) {
+        const messageEl = document.getElementById("registerMessage");
+        messageEl.innerText = msg;
+        messageEl.hidden = false;
+      }
+    }
+  </script>
+</body>
+</html>

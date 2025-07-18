@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>App Academy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form>
+    <label for="usernameInput">Username:</label>
+    <input type="text" id="usernameInput"/><br/>
+
+    <label for="passwordInput">Password:</label>
+    <input type="password" id="passwordInput"/><br/>
+
+    <p id="message" hidden></p>
+    <br/>
+    <div>
+      <a href="#" onclick="verifyUser()">Login</a>
+      <a href="register.html" id="register" hidden>Register</a>
+    </div>
+  </form>
+
+   <script>
+    function verifyUser() {
+      const username = document.getElementById("usernameInput").value.trim();
+      const password = document.getElementById("passwordInput").value.trim();
+      checkUserCreds(username, password);
+    }
+
+    function checkUserCreds(username, password) {
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      const user = users.find(u => u.username === username && u.password === password);
+
+      if (user) {
+        document.getElementById("message").innerText = "Login successful!";
+        document.getElementById("message").hidden = false;
+        setTimeout(() => {
+          window.location.href = "home.html";
+        }, 1000);
+      } else {
+        document.getElementById("message").innerText = "Username or password are incorrect";
+        document.getElementById("register").hidden = false;
+        document.getElementById("message").hidden = false;
+      }
+    }
+  </script>
+</body>
+</html>

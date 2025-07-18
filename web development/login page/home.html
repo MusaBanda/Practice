@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Home Page</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+    <div id="home">
+        <h1>Welcome to the Home Page</h1>  
+        <p id="message"></p>
+    
+        <a onclick="logout()">Logout</a>
+    </div>
+
+        <script>
+            function logout() {
+                document.getElementById("message").innerHTML = "You have been logged out.";
+                window.location.href = "index.html"; 
+            }
+        </script>
+    </body>
+</html>
