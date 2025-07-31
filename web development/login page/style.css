@@ -26,7 +26,7 @@ form {
     font-size: 2vh;
 }
 
-a, button {
+button {
     color: white;
     text-decoration: none;
     border: 1px solid white;
@@ -34,25 +34,61 @@ a, button {
     padding: 5px 10px;
     border-radius: 20px;
     background: transparent;
+    width: 10vh;
    
 }
 
-a:is(:hover), button:is(:hover) {
+button:is(:hover) {
     background-color: white;
     color: black;
     transition: 1s;
     transform: translateY(-5px);
 }
-a:active, button:active {
+button:active {
     background-color: black;
     color: white;
     transform: scale(0.95);
 }
 
 input{
-   height: 3vh;
-   width: 20vh;
+    height: 4vh;
+    font-size: 2vh;
+    color: white;
+    padding: 25px;
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: transparent;
 }
+input:focus{   
+    outline: none;
+}
+
+#group {
+  position: relative;
+}
+
+#group label {
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  margin-top: 25px;
+  color: gray;
+  font-size: 2vh;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+#group input:focus + label,
+#group input:not(:placeholder-shown) + label {
+  top: -10px;
+  font-size: 1.5vh;
+  color: #337ab7; 
+}
+#group input:focus {
+  border-bottom-color:#337ab7;
+  transition: border-bottom-color 0.3s ease-in
+}
+
+
 
 #home {
     text-align: center;

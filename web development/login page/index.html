@@ -6,17 +6,24 @@
 </head>
 <body>
   <form>
-    <label for="usernameInput">Username:</label>
-    <input type="text" id="usernameInput"/><br/>
 
-    <label for="passwordInput">Password:</label>
-    <input type="password" id="passwordInput"/><br/>
+    <div id="group">
+      <input type="text" id="usernameInput" placeholder=" " />
+      <label for="usernameInput">Username</label>
+    </div>
+    
+    <div id="group">
+      <input type="password" id="passwordInput" placeholder=" " />
+      <label for="passwordInput">Password</label>
+    </div>
+
+    <p>Not yet registered? <a href="register.html">Register</a></p>
 
     <p id="message" hidden></p>
     <br/>
     <div>
-      <a href="#" onclick="verifyUser()">Login</a>
-      <a href="register.html" id="register" hidden>Register</a>
+      <button type="button" onclick="verifyUser()">Login</button>
+      <button type="button" id="register" onclick="window.location.href='register.html'">Register</button>
     </div>
   </form>
 

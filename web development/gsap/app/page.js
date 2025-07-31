@@ -1,13 +1,10 @@
 'use client';
-import React from 'react';
-import Textanimation from "./components/Textanimation";
-import Slidescroll from "./components/Slidescroll";
-import Test from "./components/Test"
+import Metal from "./components/Metal";
 
 const Page = () => {
   return (
     <div>
-      <Test/>
+      <Metal />
     </div>
   );
 };

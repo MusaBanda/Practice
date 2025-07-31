@@ -6,11 +6,16 @@
 </head>
 <body>
   <form onsubmit="return registerUser();">
-    <label for="regUsername">Username:</label>
-    <input type="text" id="regUsername" required /><br/><br/>
-    
-    <label for="regPassword">Password:</label>
-    <input type="password" id="regPassword" required /><br/><br/>
+    <div id="group">
+      <input type="text" id="Username" placeholder=" " />
+      <label for="Username">Username</label>
+    </div>
+
+    <div id="group">
+      <input type="password" id="Password" placeholder=" " />
+      <label for="Password">Password</label>
+    </div>
+    <p>Already have an account? <a href="index.html">Login</a></p>
 
     <p id="registerMessage" hidden></p>
 
@@ -20,8 +25,8 @@
 
   <script>
     function registerUser() {
-      const username = document.getElementById("regUsername").value.trim();
-      const password = document.getElementById("regPassword").value.trim();
+      const username = document.getElementById("Username").value.trim();
+      const password = document.getElementById("Password").value.trim();
 
       if (!username || !password) {
         showMessage("Please fill out all fields.");
@@ -30,7 +35,6 @@
 
       let users = JSON.parse(localStorage.getItem("users")) || [];
 
-      // Check if username already exists
       if (users.some(user => user.username === username)) {
         showMessage("Username already taken. Please choose another.");
         return false;
